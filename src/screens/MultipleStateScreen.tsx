@@ -10,9 +10,9 @@ const MultipleStateScreen = () =>{
 
     return(
         <View style = {{justifyContent : 'space-between', flexWrap: 'wrap', flexDirection : 'column'}}>
-            <ColorCounter color = 'Red' value = {red} stateChange = {setRed}/>
-            <ColorCounter color = 'Green' value  = {green} stateChange = {setGreen}/>
-            <ColorCounter color = 'Blue' value = {blue} stateChange = {setBlue}/>
+            <ColorCounter color = 'Red' value = {red} stateChange = {setRed} isReducer = {false}/>
+            <ColorCounter color = 'Green' value  = {green} stateChange = {setGreen} isReducer = {false}/>
+            <ColorCounter color = 'Blue' value = {blue} stateChange = {setBlue} isReducer = {false}/>
             <View style = {{height : 150, width : 150 ,backgroundColor: `rgb(${red},${green},${blue})`, margin: 30}}></View>
         </View>
     )

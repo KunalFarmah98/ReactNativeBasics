@@ -62,16 +62,7 @@ const CounterScreen =  ()=>{
             </View>
         </ScrollView>
 
-        
-
     );
-
-    
-
-    function addNewColor(){
-        colors.push(color);
-        setColors(colors);
-    }
 
 }
 

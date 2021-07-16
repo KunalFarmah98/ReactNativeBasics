@@ -30,7 +30,7 @@ const ColorCounter = (props)=>{
             }
         }
         else
-            props.stateChange({colorToChange: props.color, amount: delta});
+            props.stateChange({type: `change_${props.color}`, payload: delta});
     }
     
     function decrease(){
@@ -43,7 +43,7 @@ const ColorCounter = (props)=>{
             }
         }  
         else 
-            props.stateChange({colorToChange: props.color, amount: -1*delta});
+            props.stateChange({type: `change_${props.color}`, payload: -1*delta});
 
     }
 

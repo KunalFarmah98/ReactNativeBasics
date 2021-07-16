@@ -2,12 +2,12 @@ import React, { useReducer, useState } from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import ColorCounter from '../components/ColorCounter';
 
-function getFinalValue(old, amount){
-    if(old+amount>255)
+function getFinalValue(old, payload){
+    if(old+payload>255)
         return 255;
-    else if(old+amount<0)
+    else if(old+payload<0)
         return 0;
-    else return old+amount;
+    else return old+payload;
 }
 
 
@@ -19,14 +19,14 @@ function reducer(state, action){
      */
 
     /** action is like
-     * {colorToChange: 'color',
-        amount: '+-int'}
+     * {type: 'change_color',
+        payload: '+-int'}
      **/
 
-        switch(action.colorToChange){
-            case 'Red': return{...state, Red: getFinalValue(state.Red, action.amount)}
-            case 'Green': return{...state, Green: getFinalValue(state.Green, action.amount)}
-            case 'Blue': return{...state, Blue: getFinalValue(state.Blue, action.amount)}
+        switch(action.type){
+            case 'change_Red': return{...state, Red: getFinalValue(state.Red, action.payload)}
+            case 'change_Green': return{...state, Green: getFinalValue(state.Green, action.payload)}
+            case 'change_Blue': return{...state, Blue: getFinalValue(state.Blue, action.payload)}
             default: return state
         }
     }
