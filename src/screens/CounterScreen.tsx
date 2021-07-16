@@ -10,7 +10,6 @@ const CounterScreen =  ()=>{
     const styles = StyleSheet.create({
         listStyle : {
             flexDirection : 'column',
-            flexWrap : 'wrap',
             marginHorizontal : 20
         },
         itemStyle:{
@@ -75,6 +74,14 @@ const CounterScreen =  ()=>{
                         );
                     }
                     }/>
+
+                    <View style= {{flexDirection: 'column'}}>
+                        <View style = {{backgroundColor: 'orange', width : 100, height: 100 , alignSelf: 'flex-start'}}></View>
+                        <View style = {{backgroundColor: 'purple', width : 100, height: 100, position: 'absolute', alignSelf: 'flex-end'}}></View>
+                        <View style = {{backgroundColor: 'green', width : 100, height: 100, alignSelf: 'center'}}></View>
+                    </View>
+
+
             </View>
         </ScrollView>
 
