@@ -2,7 +2,7 @@ import React, { useReducer, useState } from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import ColorCounter from '../components/ColorCounter';
 
-function getFinalValue(old, payload){
+const getFinalValue = (old, payload) => {
     if(old+payload>255)
         return 255;
     else if(old+payload<0)
@@ -12,7 +12,7 @@ function getFinalValue(old, payload){
 
 
 // this fun changes state
-function reducer(state, action){
+const reducer = (state, action) => {
 
     /* state is like
      * {'red':100, 'green':100, 'blue':100}
@@ -20,7 +20,7 @@ function reducer(state, action){
 
     /** action is like
      * {type: 'change_color',
-        payload: '+-int'}
+        payload: '+int'}
      **/
 
         switch(action.type){
@@ -38,13 +38,13 @@ function reducer(state, action){
 const MultipleStateScreen2= () =>{
 
     // alternate way of setting states that are extremely corelated
-    const [state, runReducer] = useReducer(reducer,  {'Red':100, 'Green':100, 'Blue':100});
+    const [state, dispatch] = useReducer(reducer,  {'Red':100, 'Green':100, 'Blue':100});
 
     return(
         <View style = {{justifyContent : 'space-between', flexWrap: 'wrap', flexDirection : 'column'}}>
-            <ColorCounter color = 'Red' value = {state['Red']} stateChange = {runReducer} isReducer = {true}/>
-            <ColorCounter color = 'Green' value  = {state['Green']} stateChange = {runReducer} isReducer = {true}/>
-            <ColorCounter color = 'Blue' value = {state['Blue']} stateChange = {runReducer} isReducer = {true}/>
+            <ColorCounter color = 'Red' value = {state['Red']} stateChange = {dispatch} isReducer = {true}/>
+            <ColorCounter color = 'Green' value  = {state['Green']} stateChange = {dispatch} isReducer = {true}/>
+            <ColorCounter color = 'Blue' value = {state['Blue']} stateChange = {dispatch} isReducer = {true}/>
             <View style = {{height : 150, width : 150 ,backgroundColor: `rgb(${state['Red']},${state['Green']},${state['Blue']})`, margin: 30}}></View>
         </View>
     )

@@ -33,7 +33,11 @@ const CounterScreen =  ()=>{
             color: 'black'
         }
     });
-
+    const updateList = ()=>{
+        let oldColors = [...colors]; 
+        oldColors.push(color);
+        setColors(oldColors);
+    }
     return (
         <ScrollView>
             <View style =  {styles.listStyle}>
@@ -42,9 +46,21 @@ const CounterScreen =  ()=>{
                 <Button title = '-' onPress = {()=>{setCounter(counter-1)}}/>
 
                 <Text> Add a Color </Text>
-                <TextInput style = {styles.input} 
-                    onChangeText = {(text) => {setColor(text.toString())}}/>
-                <Button title = 'Add Color' onPress=  {()=> {let oldColors = [...colors]; oldColors.push(color);setColors(oldColors);}}/>
+                <TextInput style = {styles.input}
+                    autoCapitalize = 'none'
+                    keyboardType = 'default'
+                    autoCorrect = {false}
+                    value = {color}
+                    onChangeText = {(text) => {
+                        setColor(text.toString())}
+                    }
+                    onSubmitEditing = {updateList}/>
+
+                {/* conditionally displaying a text asking color to be atleast 3 char long */}
+                
+                {(color.length>0 && color.length<3)?<Text style = {{color: 'red'}}>Color must be atleast 3 characters</Text>:null}
+
+                <Button title = 'Add Color' onPress=  {updateList}/>
 
                 <FlatList 
                     style = {styles.flatList}
